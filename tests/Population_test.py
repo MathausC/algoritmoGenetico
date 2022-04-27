@@ -16,20 +16,20 @@ class TestAIPopulation (unittest.TestCase) :
     def test_random_generation(self):
         cont = 1
         while cont < self.size:
-            self.assertNotAlmostEqual(self.population[cont-1].x1, self.population[self.size - cont].x1)
-            self.assertNotAlmostEqual(self.population[cont-1].x2, self.population[self.size - cont].x2)
-            self.assertNotAlmostEqual(self.population[cont-1].x3, self.population[self.size - cont].x3)
-            self.assertNotAlmostEqual(self.population[cont-1].x4, self.population[self.size - cont].x4)
-            self.assertNotAlmostEqual(self.population[cont-1].x5, self.population[self.size - cont].x5)
+            self.assertNotAlmostEqual(self.population[cont-1].xs[0], self.population[self.size - cont].xs[0])
+            self.assertNotAlmostEqual(self.population[cont-1].xs[1], self.population[self.size - cont].xs[1])
+            self.assertNotAlmostEqual(self.population[cont-1].xs[2], self.population[self.size - cont].xs[2])
+            self.assertNotAlmostEqual(self.population[cont-1].xs[3], self.population[self.size - cont].xs[3])
+            self.assertNotAlmostEqual(self.population[cont-1].xs[4], self.population[self.size - cont].xs[4])
             cont = cont + 1
 
     def test_individuos_results_not_none(self):
         cont = 0
         while cont < self.size:
-            self.assertIsNotNone(self.population[cont].x1, "Um dos indivíduos não possui x1")
-            self.assertIsNotNone(self.population[cont].x2, "Um dos indivíduos não possui x2")
-            self.assertIsNotNone(self.population[cont].x3, "Um dos indivíduos não possui x3")
-            self.assertIsNotNone(self.population[cont].x4, "Um dos indivíduos não possui x4")
-            self.assertIsNotNone(self.population[cont].x5, "Um dos indivíduos não possui x5")
+            self.assertIsNotNone(self.population[cont].xs[0], "Um dos indivíduos não possui x1")
+            self.assertIsNotNone(self.population[cont].xs[1], "Um dos indivíduos não possui x2")
+            self.assertIsNotNone(self.population[cont].xs[2], "Um dos indivíduos não possui x3")
+            self.assertIsNotNone(self.population[cont].xs[3], "Um dos indivíduos não possui x4")
+            self.assertIsNotNone(self.population[cont].xs[4], "Um dos indivíduos não possui x5")
             self.assertIsNotNone(self.population[cont].peso, "Um dos indivíduos não possui peso")
             cont = cont + 1
