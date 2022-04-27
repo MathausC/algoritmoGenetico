@@ -22,3 +22,14 @@ class TestAIPopulation (unittest.TestCase) :
             self.assertNotAlmostEqual(self.population[cont-1].x4, self.population[self.size - cont].x4)
             self.assertNotAlmostEqual(self.population[cont-1].x5, self.population[self.size - cont].x5)
             cont = cont + 1
+
+    def test_individuos_results_not_none(self):
+        cont = 0
+        while cont < self.size:
+            self.assertIsNotNone(self.population[cont].x1, "Um dos indivíduos não possui x1")
+            self.assertIsNotNone(self.population[cont].x2, "Um dos indivíduos não possui x2")
+            self.assertIsNotNone(self.population[cont].x3, "Um dos indivíduos não possui x3")
+            self.assertIsNotNone(self.population[cont].x4, "Um dos indivíduos não possui x4")
+            self.assertIsNotNone(self.population[cont].x5, "Um dos indivíduos não possui x5")
+            self.assertIsNotNone(self.population[cont].peso, "Um dos indivíduos não possui peso")
+            cont = cont + 1
