@@ -19,4 +19,6 @@ class TestAIPopulation (unittest.TestCase) :
             self.assertNotAlmostEqual(self.population[cont-1].x1, self.population[self.size - cont].x1)
             self.assertNotAlmostEqual(self.population[cont-1].x2, self.population[self.size - cont].x2)
             self.assertNotAlmostEqual(self.population[cont-1].x3, self.population[self.size - cont].x3)
+            self.assertNotAlmostEqual(self.population[cont-1].x4, self.population[self.size - cont].x4)
+            self.assertNotAlmostEqual(self.population[cont-1].x5, self.population[self.size - cont].x5)
             cont = cont + 1

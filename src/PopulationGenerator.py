@@ -1,10 +1,12 @@
 import random
 
 class Individual:
-    def __init__(self, x1, x2, x3) :
+    def __init__(self, x1, x2, x3, x4, x5) :
         self.x1 = x1
         self.x2 = x2
         self.x3 = x3
+        self.x4 = x4
+        self.x5 = x5
     
     peso = 0.0
 
@@ -15,6 +17,8 @@ def generate_population(size):
         x1 = random.random()
         x2 = random.random()
         x3 = random.random()
-        population.append(Individual(x1, x2, x3))
+        x4 = random.random()
+        x5 = random.random()
+        population.append(Individual(x1, x2, x3, x4, x5))
         cont = cont + 1
     return population
