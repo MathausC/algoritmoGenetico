@@ -1,4 +1,4 @@
-import PopulationGenerator as PopulationGenerator
+import src.PopulationGenerator as PopulationGenerator
 
 class Generation:
     def __init__(self, size):
