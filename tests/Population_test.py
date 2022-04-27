@@ -12,3 +12,11 @@ class TestAIPopulation (unittest.TestCase) :
 
     def test_element_type_generation(self):
         self.assertIsInstance(self.population[0], PopulationGenerator.Individual, "Os elementos da lista não são indivíduos.")
+
+    def test_random_generation(self):
+        cont = 1
+        while cont < self.size:
+            self.assertNotAlmostEqual(self.population[cont-1].x1, self.population[self.size - cont].x1)
+            self.assertNotAlmostEqual(self.population[cont-1].x2, self.population[self.size - cont].x2)
+            self.assertNotAlmostEqual(self.population[cont-1].x3, self.population[self.size - cont].x3)
+            cont = cont + 1
