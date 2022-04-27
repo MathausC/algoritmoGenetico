@@ -78,3 +78,18 @@ class Generation:
                 terceiro = i
         
         return [primeiro, segundo, terceiro]
+
+    def procriar(self, parceiro1, parceiro2, mutacao, ordem):
+
+        individuo = None
+
+        if ordem:
+            individuo = PopulationGenerator.Individual(parceiro1.xs[0], parceiro2.xs[1], parceiro1.xs[2], parceiro2.xs[3], parceiro1.xs[4])
+        else:
+            individuo = PopulationGenerator.Individual(parceiro2.xs[0], parceiro1.xs[1], parceiro2.xs[2], parceiro1.xs[3], parceiro2.xs[4])
+
+        r = random.uniform(0, 100)
+
+        if r <= mutacao:
+            index = random.randrange(0,len(individuo.xs))
+            individuo.xs[index] = random.random()
