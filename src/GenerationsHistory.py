@@ -93,3 +93,28 @@ class Generation:
         if r <= mutacao:
             index = random.randrange(0,len(individuo.xs))
             individuo.xs[index] = random.random()
+            
+
+    def torneio(self):
+        copy_generation = self.current_generation.copy()
+         
+        parceiros = []
+        par = 1
+        while par <= 2:
+            first = 0
+            second = 0
+
+            while first == second:
+                first = random.randrange(0, self.size-par)
+                second = random.randrange(0, self.size-par)
+
+            parceiro = None
+
+            if copy_generation[first].peso >= copy_generation[second].peso:
+                parceiro = copy_generation.pop(first)
+            else:
+                parceiro = copy_generation.pop(second)
+            
+            parceiros.append(parceiro)
+            par  = par + 1
+        return parceiros
