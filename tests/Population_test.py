@@ -3,7 +3,9 @@ import src.PopulationGenerator as PopulationGenerator
 
 class TestAIPopulation (unittest.TestCase) :
 
+    def setUp(self) :
+        self.size = 1000
+        self.population = PopulationGenerator.generate_population(self.size)
+
     def test_population_creation(self) :
-        size = 1000
-        population = PopulationGenerator.generate_population(size)
-        self.assertEqual(len(population), size, 'The population has not 1000 individuals.')
+        self.assertEqual(len(self.population), self.size, 'The population has not 1000 individuals.')
