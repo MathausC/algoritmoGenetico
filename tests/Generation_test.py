@@ -30,3 +30,10 @@ class TestGeneration(unittest.TestCase):
         self.assertIn(bestones[0], self.generation, "Indivíduo 1 não foi adicionado a nova geração")
         self.assertIn(bestones[1], self.generation, "Indivíduo 2 não foi adicionado a nova geração")
         self.assertIn(bestones[2], self.generation, "Indivíduo 3 não foi adicionado a nova geração")
+
+    def test_assert_best_ones(self):
+        bestones = self.generation_object.get_tres_melhores()
+        self.assertGreaterEqual(bestones[0].peso, bestones[1].peso)
+        self.assertGreaterEqual(bestones[1].peso, bestones[2].peso)
+        for i in self.generation:
+            self.assertGreaterEqual(bestones[0].peso, i.peso)
