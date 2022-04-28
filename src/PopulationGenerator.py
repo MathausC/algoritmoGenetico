@@ -29,8 +29,7 @@ def generate_population(size, faixa):
         x5 = get_random_number(faixa)
         population.append(Individual(x1, x2, x3, x4, x5))
         cont = cont + 1
-    return population
-
+    return population.sort(key=lambda individual: individual.peso, reverse=True)
 
 def get_random_number(faixa):
     return random.uniform(-faixa, faixa)
