@@ -5,7 +5,14 @@ class TestAIPopulation (unittest.TestCase) :
 
     def setUp(self) :
         self.size = 1000
-        self.population = PopulationGenerator.generate_population(self.size)
+        self.faixa = 100
+        self.population = PopulationGenerator.generate_population(self.size, self.faixa)
+
+    def test_individuos_comparation(self):
+        individuo1 = PopulationGenerator.Individual(0, 0, 0, 0, 0)
+        individuo2 = PopulationGenerator.Individual(0, 0, 0, 0, 0)
+        self.assertTrue(individuo1.equals(individuo2))
+        self.assertTrue(individuo2.equals(individuo1))
 
     def test_population_creation(self):
         self.assertEqual(len(self.population), self.size, 'The population has not 1000 individuals.')
