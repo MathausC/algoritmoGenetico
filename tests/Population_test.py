@@ -37,4 +37,4 @@ class TestAIPopulation (unittest.TestCase) :
     def test_random_number_generator(self):
         number1 = PopulationGenerator.get_random_number(100)
         number2 = PopulationGenerator.get_random_number(100)
-        self.assertNotAlmostEqual(number1, number2, 'Os números gerados randomicamente são iguais')
+        self.assertNotAlmostEqual(number1, number2)
