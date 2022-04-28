@@ -10,6 +10,12 @@ class TestGeneration(unittest.TestCase):
         self.generation_object = GenerationsHistory.Generation(self.size, self.mutacao, self.faixa)
         self.generation = self.generation_object.get_generation()
 
+    def test_procriar_return(self):
+        parceiro1 = PopulationGenerator.Individual(1, 2, 3, 4, 5)
+        parceiro2 = PopulationGenerator.Individual(5, 4, 3, 2, 1)
+        i = self.generation_object.procriar(parceiro1, parceiro2, 10, True)
+        self.assertIsNotNone(i, "Procriar está retornando um valor nulo")
+
     def  test_generation_is_none(self):
         self.assertIsNotNone(self.generation, 'A geração é nula')
 
