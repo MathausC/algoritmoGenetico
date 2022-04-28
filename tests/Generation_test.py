@@ -42,6 +42,11 @@ class TestGeneration(unittest.TestCase):
         self.generation = self.generation_object.get_generation()
         self.assertEqual(len(self.generation), self.size, 'A geração não tem tamanho correto após o troneio')
 
+    def test_best_ones_are_not_none(self):
+        bestones = self.generation_object.get_tres_melhores()
+        for i in bestones:
+            self.assertIsNotNone(i, "Pelo menos um dos melhores é nulo")
+
     def test_best_ones_are_not_none_after_generation(self):
         bestones = self.generation_object.get_tres_melhores()
         for i in bestones:
