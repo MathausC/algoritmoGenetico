@@ -6,6 +6,10 @@ class Individual:
         self.xs = [x1, x2, x3, x4, x5]
         self.peso = (self.xs[0]**5)+(self.xs[1]**4)+(self.xs[2]**3)+(self.xs[3]**2)+(self.xs[4]**1)
 
+    def imprime_peso_e_xs(self):
+        print(self.peso)
+        print(self.xs)
+
     def equals(self, individuo):
         cont  = 0
         while cont < len(self.xs):
@@ -14,8 +18,8 @@ class Individual:
             cont  =  cont + 1
         return True
 
+def generate_population(size, faixa):
     cont = 0
-    faixa = 100
     population = []
     while cont < size:
         x1 = get_random_number(faixa)
@@ -26,6 +30,7 @@ class Individual:
         population.append(Individual(x1, x2, x3, x4, x5))
         cont = cont + 1
     return population
+
 
 def get_random_number(faixa):
     return random.uniform(-faixa, faixa)
