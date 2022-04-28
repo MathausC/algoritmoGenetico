@@ -12,7 +12,8 @@ class Generation:
     def get_generation(self):
         return self.current_generation
 
-    def algoritmoGenetico(self, mutacao):
+    def algoritmo_genetico(self, mutacao):
+        self;melhores = self.calcula_melhores()
         new_generation = self.get_tres_melhores()
 
         while len(new_generation) < self.size:
@@ -30,23 +31,26 @@ class Generation:
         self.current_generation = new_generation
 
     def get_tres_melhores(self):
+        return self.melhores
+
+    def calcula_melhores(self):
         primeiro = None
         segundo =None
         terceiro = None
 
         for i in self.current_generation:
-            if primeiro == None:
+            if primeiro is None:
                 primeiro = i
             elif primeiro.peso < i.peso:
                 terceiro = segundo
                 segundo = primeiro
                 primeiro = i
-            elif segundo == None:
+            elif segundo is None:
                 segundo = i
             elif segundo.peso < i.peso:
                 terceiro = segundo
                 segundo = i
-            elif terceiro == None:
+            elif terceiro is None:
                 terceiro = i
             elif terceiro.peso < i.peso:
                 terceiro = i

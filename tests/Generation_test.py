@@ -17,8 +17,21 @@ class TestGeneration(unittest.TestCase):
         self.assertIsNotNone(i, "Procriar está retornando um valor nulo")
 
     def  test_generation_is_none(self):
-        self.assertIsNotNone(self.generation, 'A geração é nula')
+        self.assertIsNotNone(self.generation, 'A geração é nula')        
+        for i in self.generation:
+            self.assertIsNotNone(i, "Há pelo menos um elemento nulo na geração")
+       
+        self.generation_object.algoritmo_genetico(self.mutacao)
+        self.generation = self.generation_object.get_generation()
 
+        self.assertIsNotNone(self.generation, 'A geração se tornou nula após o algoritmo')
+        cont  = 0
+        for i in self.generation:
+            if i is None:
+                cont  = cont + 1
+
+        self.assertEqual(0, cont, f"Foram encontrados {cont} individuaos nulos após o algoritmo")
+    
     def  test_generation_empty(self):
         self.assertEqual(len(self.generation), self.size, 'A geração não tem o mesmo tamanho que a anterior')
 
