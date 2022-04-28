@@ -2,9 +2,12 @@ import random
 import src.PopulationGenerator as PopulationGenerator
 
 class Generation:
-    def __init__(self, size):
+    def __init__(self, size, mutacao, faixa):
         self.size = size
-        self.current_generation = PopulationGenerator.generate_population(size)
+        self.mutacao = mutacao
+        self.faixa = faixa
+        self.current_generation = PopulationGenerator.generate_population(size, faixa)
+        self.melhores = self.calcula_melhores()
 
     def get_generation(self):
         return self.current_generation
@@ -62,8 +65,10 @@ class Generation:
         r = random.uniform(0, 100)
 
         if r <= mutacao:
-            index = random.randrange(0,len(individuo.xs))
-            individuo.xs[index] = random.random()
+            index = random.randrange(0, len(individuo.xs)-1)
+            individuo.xs[index] = random.uniform(-self.faixa, self.faixa)
+        
+        return individuo
             
 
     def torneio(self):
