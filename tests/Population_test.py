@@ -33,3 +33,8 @@ class TestAIPopulation (unittest.TestCase) :
             self.assertIsNotNone(self.population[cont].xs[4], "Um dos indivíduos não possui x5")
             self.assertIsNotNone(self.population[cont].peso, "Um dos indivíduos não possui peso")
             cont = cont + 1
+
+    def test_random_number_generator(self):
+        number1 = PopulationGenerator.get_random_number(100)
+        number2 = PopulationGenerator.get_random_number(100)
+        self.assertNotAlmostEqual(number1, number2, 'Os números gerados randomicamente são iguais')

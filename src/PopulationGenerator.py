@@ -12,13 +12,17 @@ class Individual:
 
 def generate_population(size):
     cont = 0
+    faixa = 100
     population = []
     while cont < size:
-        x1 = random.random()
-        x2 = random.random()
-        x3 = random.random()
-        x4 = random.random()
-        x5 = random.random()
+        x1 = get_random_number(faixa)
+        x2 = get_random_number(faixa)
+        x3 = get_random_number(faixa)
+        x4 = get_random_number(faixa)
+        x5 = get_random_number(faixa)
         population.append(Individual(x1, x2, x3, x4, x5))
         cont = cont + 1
     return population
+
+def get_random_number(faixa):
+    return random.uniform(-faixa, faixa)
