@@ -1,5 +1,6 @@
 import unittest
 import src.GenerationsHistory as GenerationsHistory
+import src.PopulationGenerator as PopulationGenerator
 
 class TestGeneration(unittest.TestCase):
 
