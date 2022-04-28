@@ -1,4 +1,4 @@
-import src.GenerationsHistory as GenerationsHistory
+import GenerationsHistory as GenerationsHistory
 
 class Inteligencia:
     def __init__(self, size, faixa, mutacao, geracoes):
@@ -11,9 +11,11 @@ class Inteligencia:
         melhor = None
         melhor_anterior = None
         cont_melhor = 0
+        historico = []
         while cont <= self.geracoes:
             print(f'Geracao: {cont}')
             melhores = self.generation_object.get_tres_melhores()
+            historico.append(melhores[0])
             melhores[0].imprime_peso_e_xs()
 
             if melhor is not None:
