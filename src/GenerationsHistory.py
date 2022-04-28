@@ -1,5 +1,5 @@
 import random
-import src.PopulationGenerator as PopulationGenerator
+import PopulationGenerator as PopulationGenerator
 
 class Generation:
     def __init__(self, size, mutacao, faixa):
@@ -13,7 +13,6 @@ class Generation:
         return self.current_generation
 
     def algoritmo_genetico(self, mutacao):
-        self;melhores = self.calcula_melhores()
         new_generation = self.get_tres_melhores()
 
         while len(new_generation) < self.size:
@@ -31,34 +30,12 @@ class Generation:
         self.current_generation = new_generation
 
     def get_tres_melhores(self):
-        return self.melhores
-
-    def calcula_melhores(self):
-        primeiro = None
-        segundo =None
-        terceiro = None
-
-        for i in self.current_generation:
-            if primeiro is None:
-                primeiro = i
-            elif primeiro.peso < i.peso:
-                terceiro = segundo
-                segundo = primeiro
-                primeiro = i
-            elif segundo is None:
-                segundo = i
-            elif segundo.peso < i.peso:
-                terceiro = segundo
-                segundo = i
-            elif terceiro is None:
-                terceiro = i
-            elif terceiro.peso < i.peso:
-                terceiro = i
-        
-        return [primeiro, segundo, terceiro]
+        melhores = []
+        for i in range(3):
+            melhores.append(self.current_generation[i])
+        return melhores
 
     def procriar(self, parceiro1, parceiro2, mutacao, ordem):
-
         individuo = None
 
         if ordem:
