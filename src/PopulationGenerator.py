@@ -3,12 +3,8 @@ import random
 class Individual:
 
     def __init__(self, x1, x2, x3, x4, x5) :
-        self.x1 = x1
-        self.x2 = x2
-        self.x3 = x3
-        self.x4 = x4
-        self.x5 = x5
-        self.peso = (self.x5**5)+(self.x4**4)+(self.x3**3)+(self.x2**2)+(self.x1**1)
+        self.xs = [x1, x2, x3, x4, x5]
+        self.peso = (self.xs[0]**5)+(self.xs[1]**4)+(self.xs[2]**3)+(self.xs[3]**2)+(self.xs[4]**1)
 
 def generate_population(size):
     cont = 0
