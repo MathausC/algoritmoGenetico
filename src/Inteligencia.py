@@ -1,4 +1,6 @@
 import GenerationsHistory as GenerationsHistory
+import matplotlib.pyplot as plt
+from os import system, name
 
 class Inteligencia:
     def __init__(self, size, faixa, mutacao, geracoes):
@@ -11,14 +13,20 @@ class Inteligencia:
         melhor = None
         melhor_anterior = None
         cont_melhor = 0
-        historico = []
+        geracao = []
+        fit = []
+        x1 = []
+        x2 = []
+        x3 = []
+        x4 = []
+        x5 = []
         while cont <= self.geracoes:
+            self.clear()
             print(f'Geracao: {cont}')
             melhores = self.generation_object.get_tres_melhores()
-            historico.append(melhores[0])
             melhores[0].imprime_peso_e_xs()
 
-            if melhor is not None:
+            if melhor is None:
                 melhor = melhores[0]
             else:
                 melhor_anterior = melhor
@@ -28,11 +36,42 @@ class Inteligencia:
                 else:
                     cont_melhor = 0
             
+            geracao.append(cont)
+            x1.append(melhor.xs[0])
+            x2.append(melhor.xs[1])
+            x3.append(melhor.xs[2])
+            x4.append(melhor.xs[3])
+            x5.append(melhor.xs[4])
+            fit.append(melhor.peso)
+        
             if cont_melhor >= repeticao:
                 break
 
             self.generation_object.algoritmo_genetico(self.mutacao)
             cont = cont + 1
+
+        plt.plot(geracao, x1, color='blue', label='stars',  marker='*')
+        plt.plot(geracao, x2, color='yellow', label='stars',  marker='*')
+        plt.plot(geracao, x3, color='green', label='stars',  marker='*')
+        plt.plot(geracao, x4, color='black', label='stars',  marker='*')
+        plt.plot(geracao, x5, color='pink', label='stars',  marker='*')
+        plt.xlabel('gerações - axis')
+        plt.ylabel('xs - axis')
+        plt.title('Algoritmo genetico')
+        plt.show()
+        plt.close()
+        plt.plot(geracao, fit, color='red', label='stars',  marker='*',)
+        plt.xlabel('gerações - axis')
+        plt.ylabel('fit - axis')
+        plt.title('Algoritmo genetico')
+        plt.show()
+    
+    def clear(self):
+        if name == 'nt':
+            _ = system('cls')
+
+        else:
+            _ = system('clear')
 
 def menu():
     size = int(input("Informe o número de indivíduos: "))
