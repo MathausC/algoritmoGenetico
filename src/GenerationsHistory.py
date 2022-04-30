@@ -7,7 +7,7 @@ class Generation:
         self.mutacao = mutacao
         self.faixa = faixa
         self.current_generation = PopulationGenerator.generate_population(size, faixa)
-        self.melhores = self.calcula_melhores()
+        self.melhores = self.get_tres_melhores()
 
     def get_generation(self):
         return self.current_generation
@@ -30,10 +30,28 @@ class Generation:
         self.current_generation = new_generation
 
     def get_tres_melhores(self):
-        melhores = []
-        for i in range(3):
-            melhores.append(self.current_generation[i])
-        return melhores
+            primeiro = None
+            segundo =None
+            terceiro = None
+
+            for i in self.current_generation:
+                if primeiro is None:
+                    primeiro = i
+                elif primeiro.peso < i.peso:
+                    terceiro = segundo
+                    segundo = primeiro
+                    primeiro = i
+                elif segundo is None:
+                    segundo = i
+                elif segundo.peso < i.peso:
+                    terceiro = segundo
+                    segundo = i
+                elif terceiro is None:
+                    terceiro = i
+                elif terceiro.peso < i.peso:
+                    terceiro = i
+            
+            return [primeiro, segundo, terceiro]
 
     def procriar(self, parceiro1, parceiro2, mutacao, ordem):
         individuo = None
