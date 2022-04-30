@@ -64,7 +64,7 @@ class Generation:
         r = random.uniform(0, 100)
 
         if r <= mutacao:
-            index = random.randrange(0, len(individuo.xs)-1)
+            index = random.randrange(0, len(individuo.xs))
             individuo.xs[index] = random.uniform(-self.faixa, self.faixa)
         
         return individuo
